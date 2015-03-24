@@ -13,7 +13,9 @@ all: program
 
 build:
 	$(CC) $(CFLAGS) -c src/main.c -o obj/main.o
-	$(CC) $(CFLAGS) obj/main.o -o $(ELF)
+	$(CC) $(CFLAGS) -c src/adc.c -o obj/adc.o
+	$(CC) $(CFLAGS) -c src/timer.c -o obj/timer.o
+	$(CC) $(CFLAGS) obj/main.o obj/adc.o obj/timer.o -o $(ELF)
 	
 hex: build
 	avr-objcopy -j .text -j .data -O ihex $(ELF) $(HEX)
