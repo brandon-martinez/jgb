@@ -5,38 +5,34 @@
 #include <stdint.h>
 
 void analogSetup(uint8_t mode, uint8_t scale) {
-	switch(mode) {
-		//AREF SETUP
-		case ADC_AREF:
-			ADCSRA = (1 << ADEN) | scale;
-			ADCSRB = (1 << AREFEN);
-			break;
-		
-		//AVCC
-		case ADC_AVCC:
-			ADMUX  = (1 << AREFEN) | (1 << REFS0);
-			ADCSRA = (1 << ADEN) | scale;
-			ADCSRB = (1 << AREFEN);
-			break;
-	}
+	//switch(mode) {
+	//	//AREF SETUP
+	//	case ADC_AREF:
+	//		ADCSRA = (scale << ADPS0);
+	//		ADCSRB = (1 << AREFEN);
+	//		ADCSRA = (1 << ADEN);
+	//		break;
+	//	//AVCC
+	//	case ADC_AVCC:
+			// AREF = AVcc
+			ADMUX = (1<<REFS0);
+			// ADC Enable and prescaler of 128
+			// 16000000/128 = 125000
+			ADCSRA = (1<<ADEN)|(1<<ADPS2)|(1<<ADPS1)|(1<<ADPS0);
+	//		break;
+	//}
 }
 
 uint16_t adcRead(uint8_t pin) {
 	//Clear Lower 5 bits (MUX[4:0])
-	ADMUX &= 0xE0;
-	ADMUX |= pin;
+	ADMUX &= ~(0x1F << MUX0);
+	ADMUX |= (pin << MUX0);
 	
 	//Start conversion
 	ADCSRA |= (1 << ADSC);
-	
 	//Wait for complete conversion
-	while(bit_is_set(ADCSRA, ADSC));
-	
-	//Combine bits and return value
-	uint16_t low, high;
-	low  = ADCL;
-	high = ADCH;
-	return (high << 8) | low;
+	while(ADCSRA & (1<<ADSC));
+	return ADC;
 }
 
 void enableDAC(void) {
