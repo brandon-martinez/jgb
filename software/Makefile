@@ -15,7 +15,9 @@ build:
 	$(CC) $(CFLAGS) -c src/main.c -o obj/main.o
 	$(CC) $(CFLAGS) -c src/adc.c -o obj/adc.o
 	$(CC) $(CFLAGS) -c src/timer.c -o obj/timer.o
-	$(CC) $(CFLAGS) obj/main.o obj/adc.o obj/timer.o -o $(ELF)
+	$(CC) $(CFLAGS) -c src/canlib/can_lib.c -o obj/can_lib.o
+	$(CC) $(CFLAGS) -c src/canlib/can_drv.c -o obj/can_drv.o
+	$(CC) $(CFLAGS) obj/main.o obj/adc.o obj/timer.o obj/can_lib.o obj/can_drv.o -o $(ELF)
 	
 hex: build
 	avr-objcopy -j .text -j .data -O ihex $(ELF) $(HEX)

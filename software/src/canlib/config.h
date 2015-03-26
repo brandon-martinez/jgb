@@ -1,4 +1,4 @@
-#define F_CPU 16000000
+//#define F_CPU 16E6
 #define FOSC 16000
 
-#define CAN_BAUDRATE 1000
+#define CAN_BAUDRATE 125
