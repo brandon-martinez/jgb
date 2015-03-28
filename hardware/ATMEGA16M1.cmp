@@ -1,4 +1,4 @@
-Cmp-Mod V01 Created by CvPcb (2013-may-18)-stable date = Mon 23 Mar 2015 12:19:20 AM EDT
+Cmp-Mod V01 Created by CvPcb (2013-may-18)-stable date = Fri 27 Mar 2015 11:37:27 PM EDT
 
 BeginCmp
 TimeStamp = /54EEB93E;
@@ -115,7 +115,7 @@ EndCmp
 BeginCmp
 TimeStamp = /54DAA1A9;
 Reference = ISP1;
-ValeurCmp = ISP0;
+ValeurCmp = ISP1;
 IdModule  = pin_strip_3x2;
 EndCmp
 
@@ -256,6 +256,27 @@ BeginCmp
 TimeStamp = /54EE9FDE;
 Reference = R10;
 ValeurCmp = 10k;
+IdModule  = r_0805;
+EndCmp
+
+BeginCmp
+TimeStamp = /55161CE8;
+Reference = R11;
+ValeurCmp = 220;
+IdModule  = r_0805;
+EndCmp
+
+BeginCmp
+TimeStamp = /55161DD0;
+Reference = R12;
+ValeurCmp = 220;
+IdModule  = r_0805;
+EndCmp
+
+BeginCmp
+TimeStamp = /55161DCA;
+Reference = R13;
+ValeurCmp = 220;
 IdModule  = r_0805;
 EndCmp
 
