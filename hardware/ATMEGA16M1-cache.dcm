@@ -1,7 +1,3 @@
-EESchema-DOCLIB  Version 2.0  Date: Sun 01 Mar 2015 12:44:14 PM EST
-#
-$CMP RELAY_T9AS1X1
-D Relay, 1 Form A contact, TE T9AS1x1
-$ENDCMP
+EESchema-DOCLIB  Version 2.0
 #
 #End Doc Library

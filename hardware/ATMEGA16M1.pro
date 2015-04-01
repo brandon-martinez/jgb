@@ -1,13 +1,6 @@
-update=Sat 28 Mar 2015 12:01:38 PM EDT
+update=Wed 01 Apr 2015 04:59:43 PM EDT
 version=1
-last_client=pcbnew
-[general]
-version=1
-[cvpcb]
-version=1
-NetIExt=net
-[cvpcb/libraries]
-EquName1=devcms
+last_client=kicad
 [eeschema]
 version=1
 LibDir=
@@ -59,14 +52,19 @@ LibName39=w_logic
 LibName40=w_device
 LibName41=w_analog
 LibName42=/home/jgehrig/owncloud/Project/School/vscada/ATMEGA 16M1/custom
+[cvpcb]
+version=1
+NetIExt=net
+[cvpcb/libraries]
+EquName1=devcms
 [pcbnew]
 version=1
-LastNetListRead=
+LastNetListRead=ATMEGA16M1.net
 UseCmpFile=1
-PadDrill="    0.600000"
-PadDrillOvalY="    0.600000"
-PadSizeH="    3.799840"
-PadSizeV="    1.800860"
+PadDrill="    3.175000"
+PadDrillOvalY="    3.175000"
+PadSizeH="    5.562600"
+PadSizeV="    5.562600"
 PcbTextSizeV="    1.500000"
 PcbTextSizeH="    1.500000"
 PcbTextThickness="    0.300000"
@@ -146,5 +144,7 @@ LibName63=w_conn_av
 LibName64=w_conn_9159
 LibName65=w_capacitors
 LibName66=w_battery_holders
-LibName67=leopard_paw
-LibName68=lafayette_ece
+LibName67=lafayette_ece
+LibName68=paw
+[general]
+version=1

@@ -1,4 +1,4 @@
-Cmp-Mod V01 Created by PcbNew date = Sat 28 Mar 2015 01:22:53 PM EDT
+Cmp-Mod V01 Created by CvPcb (2013-may-18)-stable date = Wed 01 Apr 2015 04:05:56 PM EDT
 
 BeginCmp
 TimeStamp = /54EEB93E;
@@ -71,16 +71,16 @@ IdModule  = Led_0603;
 EndCmp
 
 BeginCmp
-TimeStamp = /54EEA91D;
+TimeStamp = /551C5A67;
 Reference = D2;
-ValeurCmp = RX?;
+ValeurCmp = RX;
 IdModule  = Led_0603;
 EndCmp
 
 BeginCmp
 TimeStamp = /54EEA931;
 Reference = D3;
-ValeurCmp = TX?;
+ValeurCmp = TX;
 IdModule  = Led_0603;
 EndCmp
 
@@ -96,6 +96,48 @@ TimeStamp = /54EEBC98;
 Reference = D5;
 ValeurCmp = CANRX;
 IdModule  = Led_0603;
+EndCmp
+
+BeginCmp
+TimeStamp = /551C5389;
+Reference = D6;
+ValeurCmp = RELAY1;
+IdModule  = LED-0603;
+EndCmp
+
+BeginCmp
+TimeStamp = /551C5892;
+Reference = D7;
+ValeurCmp = RELAY2;
+IdModule  = LED-0603;
+EndCmp
+
+BeginCmp
+TimeStamp = /551C5898;
+Reference = D8;
+ValeurCmp = RELAY3;
+IdModule  = LED-0603;
+EndCmp
+
+BeginCmp
+TimeStamp = /551C4C68;
+Reference = D9;
+ValeurCmp = DIODE;
+IdModule  = do214ac;
+EndCmp
+
+BeginCmp
+TimeStamp = /551C4C75;
+Reference = D10;
+ValeurCmp = DIODE;
+IdModule  = do214ac;
+EndCmp
+
+BeginCmp
+TimeStamp = /551C4C7B;
+Reference = D11;
+ValeurCmp = DIODE;
+IdModule  = do214ac;
 EndCmp
 
 BeginCmp
@@ -218,7 +260,7 @@ IdModule  = r_0603;
 EndCmp
 
 BeginCmp
-TimeStamp = /54EEA853;
+TimeStamp = /551C5A61;
 Reference = R5;
 ValeurCmp = 1k;
 IdModule  = r_0603;
@@ -281,9 +323,30 @@ IdModule  = r_0603;
 EndCmp
 
 BeginCmp
+TimeStamp = /551C5383;
+Reference = R14;
+ValeurCmp = 1k;
+IdModule  = r_0603;
+EndCmp
+
+BeginCmp
+TimeStamp = /54EEA853;
+Reference = R15;
+ValeurCmp = 1k;
+IdModule  = r_0603;
+EndCmp
+
+BeginCmp
+TimeStamp = /551C5393;
+Reference = R16;
+ValeurCmp = 1k;
+IdModule  = r_0603;
+EndCmp
+
+BeginCmp
 TimeStamp = /54DAA2DE;
 Reference = SW1;
-ValeurCmp = SW_PUSH;
+ValeurCmp = RESET;
 IdModule  = smd_push;
 EndCmp
 
