@@ -5,8 +5,8 @@
     (no_connects 0)
     (area 31.064288 35.250001 159.706733 147.5994)
     (thickness 1.6)
-    (drawings 74)
-    (tracks 552)
+    (drawings 79)
+    (tracks 551)
     (zones 0)
     (modules 65)
     (nets 61)
@@ -236,7 +236,7 @@
     (add_net /V_USER)
   )
 
-  (module hole_5mm (layer F.Cu) (tedit 55199C9E) (tstamp 55199CDB)
+  (module hole_5mm (layer F.Cu) (tedit 551C6896) (tstamp 55199CDB)
     (at 48.26 50.8)
     (descr "Hole 5mm")
     (fp_text reference hole_5mm (at 0 -4.318) (layer F.SilkS) hide
@@ -249,7 +249,7 @@
     (fp_line (start -3.175 0) (end 3.175 0) (layer F.SilkS) (width 0.254))
     (fp_circle (center 0 0) (end 2.794 -0.254) (layer F.SilkS) (width 0.254))
     (pad 1 thru_hole circle (at 0 0) (size 5.5626 5.5626) (drill 3.175)
-      (layers *.Cu F.SilkS)
+      (layers *.Cu *.Mask F.SilkS)
     )
     (model walter/details/hole.wrl
       (at (xyz 0 0 0))
@@ -258,7 +258,7 @@
     )
   )
 
-  (module hole_5mm (layer F.Cu) (tedit 55199C9E) (tstamp 55199CD2)
+  (module hole_5mm (layer F.Cu) (tedit 551C6891) (tstamp 55199CD2)
     (at 152.4 50.8)
     (descr "Hole 5mm")
     (fp_text reference hole_5mm (at 0 -4.318) (layer F.SilkS) hide
@@ -271,7 +271,7 @@
     (fp_line (start -3.175 0) (end 3.175 0) (layer F.SilkS) (width 0.254))
     (fp_circle (center 0 0) (end 2.794 -0.254) (layer F.SilkS) (width 0.254))
     (pad 1 thru_hole circle (at 0 0) (size 5.5626 5.5626) (drill 3.175)
-      (layers *.Cu F.SilkS)
+      (layers *.Cu *.Mask F.SilkS)
     )
     (model walter/details/hole.wrl
       (at (xyz 0 0 0))
@@ -280,7 +280,7 @@
     )
   )
 
-  (module hole_5mm (layer F.Cu) (tedit 55199C9E) (tstamp 55199CC3)
+  (module hole_5mm (layer F.Cu) (tedit 551C689C) (tstamp 55199CC3)
     (at 152.4 142.24)
     (descr "Hole 5mm")
     (fp_text reference hole_5mm (at 0 -4.318) (layer F.SilkS) hide
@@ -293,7 +293,7 @@
     (fp_line (start -3.175 0) (end 3.175 0) (layer F.SilkS) (width 0.254))
     (fp_circle (center 0 0) (end 2.794 -0.254) (layer F.SilkS) (width 0.254))
     (pad 1 thru_hole circle (at 0 0) (size 5.5626 5.5626) (drill 3.175)
-      (layers *.Cu F.SilkS)
+      (layers *.Cu *.Mask F.SilkS)
     )
     (model walter/details/hole.wrl
       (at (xyz 0 0 0))
@@ -1474,7 +1474,7 @@
     )
   )
 
-  (module hole_5mm (layer F.Cu) (tedit 55199C9E) (tstamp 5517A3D9)
+  (module hole_5mm (layer F.Cu) (tedit 551C68A3) (tstamp 5517A3D9)
     (at 48.26 142.24)
     (descr "Hole 5mm")
     (fp_text reference hole_5mm (at 0 -4.318) (layer F.SilkS) hide
@@ -1487,7 +1487,7 @@
     (fp_line (start -3.175 0) (end 3.175 0) (layer F.SilkS) (width 0.254))
     (fp_circle (center 0 0) (end 2.794 -0.254) (layer F.SilkS) (width 0.254))
     (pad 1 thru_hole circle (at 0 0) (size 5.5626 5.5626) (drill 3.175)
-      (layers *.Cu F.SilkS)
+      (layers *.Cu *.Mask F.SilkS)
     )
     (model walter/details/hole.wrl
       (at (xyz 0 0 0))
@@ -5527,6 +5527,11 @@
     )
   )
 
+  (gr_line (start 160.02 45.72) (end 160.02 147.32) (angle 90) (layer F.SilkS) (width 2.54))
+  (gr_line (start 43.18 147.32) (end 43.18 45.72) (angle 90) (layer F.SilkS) (width 0.635))
+  (gr_line (start 157.48 147.32) (end 43.18 147.32) (angle 90) (layer F.SilkS) (width 0.635))
+  (gr_line (start 157.48 45.72) (end 157.48 147.32) (angle 90) (layer F.SilkS) (width 0.635))
+  (gr_line (start 43.18 45.72) (end 157.48 45.72) (angle 90) (layer F.SilkS) (width 0.635))
   (gr_text - (at 57.785 129.54 180) (layer F.SilkS) (tstamp 551C582E)
     (effects (font (size 1.905 1.905) (thickness 0.47625)))
   )
@@ -5712,7 +5717,6 @@
   )
   (gr_line (start 157.48 147.32) (end 157.48 45.72) (angle 90) (layer Edge.Cuts) (width 0.1))
 
-  (segment (start 86.386 79.02) (end 86.386 79.02) (width 0.254) (layer F.Cu) (net 0) (tstamp 551C24A5))
   (segment (start 102.362 82.169) (end 88.519 82.169) (width 0.254) (layer F.Cu) (net 1))
   (segment (start 105.30078 96.12122) (end 109.093 92.329) (width 0.254) (layer F.Cu) (net 1) (tstamp 551C2937))
   (segment (start 109.093 92.329) (end 109.093 88.011) (width 0.254) (layer F.Cu) (net 1) (tstamp 551C2938))
