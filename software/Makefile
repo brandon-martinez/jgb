@@ -3,6 +3,7 @@ CC=avr-gcc
 CFLAGS=-Os -g -Wall -std=c99 -mmcu=$(AVR)
 
 AVRDUDE=avrdude
+PRGMR=usbtiny
 AVR_AVRD=m16
 
 ELF=bin/blink.elf
@@ -23,12 +24,12 @@ hex: build
 	avr-objcopy -j .text -j .data -O ihex $(ELF) $(HEX)
 	
 program: hex
-	$(AVRDUDE) -F -V -c usbtiny -p $(AVR_AVRD) -U flash:w:$(HEX)
+	$(AVRDUDE) -F -V -c $(PRGMR) -p $(AVR_AVRD) -U flash:w:$(HEX)
 
 
 #PHONY
 fuse:
-	$(AVRDUDE) -c usbtiny -p $(AVR_AVRD) -F -U lfuse:w:0xef:m
+	$(AVRDUDE) -c $(PRGMR) -p $(AVR_AVRD) -F -U lfuse:w:0xef:m
 
 clean:
 	rm -rf bin/*.hex bin/*.elf obj/*.o

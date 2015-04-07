@@ -1,40 +1,18 @@
 # LFEV 2015 CAN Communications Microprocessor #
 This software is written for a CAN 2.0 communications board. The is a microcontroller was designed to interface all low level analog and digital sensors present on the 2015 LFEV with the main Data Acquisition Computer (SCADA). The software is capable of handling both reading and writing data.  
 
+## Overview ##
+
 ## Target Device ##
 This software is written for the **Atmel ATMEGA 16M1 Automotive AVR**  
   
 This device was selected for its price, software availability, documentation and onboard CAN bus support.
 
-### Features ###
+The capabilities and documentation for this device can be found at:
 
-* Atmel® AVR® 8-bit microcontroller
-* Up to 1 MIPS throughput per MHz
-* 16KBytes flash of in-system programmable program memory
-* 512B of in-system programmable EEPROM
-* 1KBytes internal SRAM
-* On-chip debug interface (debugWIRE)
-* CAN 2.0A/B with six message objects - ISO 16845 certified
-* Variable PWM duty cycle and frequency
-* Synchronous update of all PWM registers
-* Peripheral features
-* One 8-bit general purpose timer/counter
-* One 16-bit general purpose timer/counter
-* One master/slave SPI serial interface
-* 10-bit ADC
-	* 11 single ended channels
-	* Three differential ADC channel pairs (5×, 10×, 20×, 40×)
-* 10-bit DAC for variable voltage reference (comparators, ADC)
-* Programmable watchdog timer with separate on-chip oscillator
-* On-chip temperature sensor
+1. [ATMega16M1 Overview](http://www.atmel.com/devices/atmega16m1.aspx)
+2. [ATMega16M1 Datasheet](http://www.atmel.com/images/doc8209.pdf)
 
-### Operating Specifications ###
-- Operating voltage: 2.7V - 5.5V
-- Extended operating temperature:
-- -40°C to +85°C
-- Core speed grade:
-- 0 - 8MHz @ 2.7 - 4.5V
-- 0 - 16MHz @ 4.5 - 5.5V
 
 ### Toolchain Information ###
 **Compiler:** GCC-4.9.2 (AVR)  
@@ -50,7 +28,7 @@ This device was selected for its price, software availability, documentation and
 [ATMega16M1 User Manual](http://www.atmel.com/images/doc8209.pdf)
   
 ### Compiler Information ###
-Here is output information from the C compiler used to write all code. A standard GCC compiler with AVR target has been used. This compiler was built from source, however the latest version of this prebuilt toolchain of can be extracted from the Arduino IDE for Mac/Window/Linux. [Download](http://arduino.cc/en/Main/Software)
+Here is output information from the C compiler used to write all code. A standard GCC compiler with AVR target has been used. This compiler was built from source, however the latest version of this prebuilt toolchain of could be extracted from the Arduino IDE for Mac/Window/Linux if required. [Download](http://arduino.cc/en/Main/Software)
 
 To build a GCC AVR cross compiler, insturctions can be found at: [Tutorial](http://www.nongnu.org/avr-libc/user-manual/install_tools.html)
 
@@ -70,22 +48,40 @@ gcc version 4.9.2 (GCC)
 
 ## Building The Software ##
 
-**To compile only:**  
-```
-make build
-```
-
-**To compile and program:**  
+This command will build the firmware image, and upload it to the target device using 'avrdude'. 
 ```
 make
 ```
+This makefile was configured to run with the usbTinyISP AVR programmer.   
+If you are not using a usbTinyISP programmer, you will need to change the following to match your programmer.  
+```
+vi Makefile
+```
+
+and modify the following line
+
+```
+PGRMR={your programmer}
+```
+
+See AVRDude User Manual above for a list of supported programmers.
 
 ## Programming The Microcontroller##
+**To build the firmware image only:**  
+```
+make build
+```
+**To upload the last built firmware only:**  
 ```
 make program
 ```
+  
 
 ## Configuring the Onboard Crystal Oscillator##
+This command must be run to configure the AVR device upon its first program. Once this command is issued, it should not need to be run again.  
+
+The command below configures the device to use the proper clock source (16MHz crystal) instead of the internal oscillator.
 ```
 make fuse
 ```
+*NOTE: This command will throw a Device ID mis-match, this is normal. This is because the ATMEGA16M1 is present listed in the AVRDude list of devices*
