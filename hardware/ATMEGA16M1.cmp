@@ -1,9 +1,9 @@
-Cmp-Mod V01 Created by CvPcb (2013-may-18)-stable date = Wed 01 Apr 2015 04:05:56 PM EDT
+Cmp-Mod V01 Created by CvPcb (2013-may-18)-stable date = Fri 10 Apr 2015 09:58:20 PM EDT
 
 BeginCmp
 TimeStamp = /54EEB93E;
 Reference = C1;
-ValeurCmp = C;
+ValeurCmp = 0.1u;
 IdModule  = c_0603;
 EndCmp
 
@@ -12,13 +12,6 @@ TimeStamp = /54DAA5A1;
 Reference = C2;
 ValeurCmp = 47u;
 IdModule  = c_elec_4x5.3;
-EndCmp
-
-BeginCmp
-TimeStamp = /54DE18FF;
-Reference = C3;
-ValeurCmp = 0.1u;
-IdModule  = c_0603;
 EndCmp
 
 BeginCmp
@@ -31,7 +24,7 @@ EndCmp
 BeginCmp
 TimeStamp = /54DE19D6;
 Reference = C5;
-ValeurCmp = 0.1;
+ValeurCmp = 0.1u;
 IdModule  = c_0603;
 EndCmp
 
@@ -52,14 +45,14 @@ EndCmp
 BeginCmp
 TimeStamp = /54DAA126;
 Reference = C8;
-ValeurCmp = 22p;
+ValeurCmp = 10p;
 IdModule  = c_0603;
 EndCmp
 
 BeginCmp
 TimeStamp = /54DAA13D;
 Reference = C9;
-ValeurCmp = 22p;
+ValeurCmp = 10p;
 IdModule  = c_0603;
 EndCmp
 
@@ -102,21 +95,21 @@ BeginCmp
 TimeStamp = /551C5389;
 Reference = D6;
 ValeurCmp = RELAY1;
-IdModule  = LED-0603;
+IdModule  = Led_0603;
 EndCmp
 
 BeginCmp
 TimeStamp = /551C5892;
 Reference = D7;
 ValeurCmp = RELAY2;
-IdModule  = LED-0603;
+IdModule  = Led_0603;
 EndCmp
 
 BeginCmp
 TimeStamp = /551C5898;
 Reference = D8;
 ValeurCmp = RELAY3;
-IdModule  = LED-0603;
+IdModule  = Led_0603;
 EndCmp
 
 BeginCmp
@@ -158,7 +151,7 @@ BeginCmp
 TimeStamp = /54DAA1A9;
 Reference = ISP1;
 ValeurCmp = ISP1;
-IdModule  = pin_strip_3x2;
+IdModule  = vasch_strip_3x2;
 EndCmp
 
 BeginCmp
@@ -239,23 +232,9 @@ IdModule  = r_0603;
 EndCmp
 
 BeginCmp
-TimeStamp = /54DE18B6;
+TimeStamp = /55284A3E;
 Reference = R2;
-ValeurCmp = 1k;
-IdModule  = r_0603;
-EndCmp
-
-BeginCmp
-TimeStamp = /54DE18C3;
-Reference = R3;
-ValeurCmp = 1k;
-IdModule  = r_0603;
-EndCmp
-
-BeginCmp
-TimeStamp = /54DE1D1D;
-Reference = R4;
-ValeurCmp = 1k;
+ValeurCmp = 120;
 IdModule  = r_0603;
 EndCmp
 
@@ -348,6 +327,13 @@ TimeStamp = /54DAA2DE;
 Reference = SW1;
 ValeurCmp = RESET;
 IdModule  = smd_push;
+EndCmp
+
+BeginCmp
+TimeStamp = /55287F34;
+Reference = SW2;
+ValeurCmp = FTDI;
+IdModule  = dip_2-300;
 EndCmp
 
 BeginCmp

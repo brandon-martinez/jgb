@@ -41,6 +41,7 @@ LIBS:w_logic
 LIBS:w_device
 LIBS:w_analog
 LIBS:custom
+LIBS:dips-s
 LIBS:ATMEGA16M1-cache
 EELAYER 27 0
 EELAYER END
@@ -48,7 +49,7 @@ $Descr USLetter 11000 8500
 encoding utf-8
 Sheet 1 1
 Title "LFEF CAN Communication Board"
-Date "2 apr 2015"
+Date "11 apr 2015"
 Rev "0"
 Comp "Lafayette College"
 Comment1 "Engineer: John Gehrig"
@@ -398,60 +399,14 @@ F 3 "" H 3300 2200 60  0000 C CNN
 	1    3300 2200
 	1    0    0    -1  
 $EndComp
-Text Label 2900 7000 2    60   ~ 0
+Text Label 3200 7100 2    60   ~ 0
 TXD
-Text Label 2900 7200 2    60   ~ 0
+Text Label 3200 7000 2    60   ~ 0
 RXD
-$Comp
-L R R2
-U 1 1 54DE18B6
-P 2000 7000
-F 0 "R2" V 2080 7000 40  0000 C CNN
-F 1 "1k" V 2007 7001 40  0000 C CNN
-F 2 "~" V 1930 7000 30  0000 C CNN
-F 3 "~" H 2000 7000 30  0000 C CNN
-F 4 "RHM1.0KCGCT-ND" H 2000 7000 60  0001 C CNN "P/N"
-F 5 "Digikey" H 2000 7000 60  0001 C CNN "Supplier"
-F 6 "http://www.digikey.com/product-detail/en/MCR03ERTJ102/RHM1.0KCGCT-ND/2796495" H 2000 7000 60  0001 C CNN "URL"
-	1    2000 7000
-	0    -1   -1   0   
-$EndComp
-$Comp
-L R R3
-U 1 1 54DE18C3
-P 2000 7200
-F 0 "R3" V 2080 7200 40  0000 C CNN
-F 1 "1k" V 2007 7201 40  0000 C CNN
-F 2 "~" V 1930 7200 30  0000 C CNN
-F 3 "~" H 2000 7200 30  0000 C CNN
-F 4 "RHM1.0KCGCT-ND" H 2000 7200 60  0001 C CNN "P/N"
-F 5 "Digikey" H 2000 7200 60  0001 C CNN "Supplier"
-F 6 "http://www.digikey.com/product-detail/en/MCR03ERTJ102/RHM1.0KCGCT-ND/2796495" H 2000 7200 60  0001 C CNN "URL"
-	1    2000 7200
-	0    -1   -1   0   
-$EndComp
 Text Label 1100 7000 0    60   ~ 0
 FTDI_TX
-Text Label 1100 7200 0    60   ~ 0
+Text Label 1100 7100 0    60   ~ 0
 FTDI_RX
-Text Label 2900 7650 2    60   ~ 0
-RTS
-Text Label 1100 7650 0    60   ~ 0
-~RESET
-$Comp
-L C C3
-U 1 1 54DE18FF
-P 2000 7650
-F 0 "C3" H 2000 7750 40  0000 L CNN
-F 1 "0.1u" H 2006 7565 40  0000 L CNN
-F 2 "~" H 2038 7500 30  0000 C CNN
-F 3 "~" H 2000 7650 60  0000 C CNN
-F 4 "490-1524-1-ND" H 2000 7650 60  0001 C CNN "P/N"
-F 5 "Digikey" H 2000 7650 60  0001 C CNN "Supplier"
-F 6 "http://www.digikey.com/product-detail/en/GRM188R71E104KA01D/490-1524-1-ND/587865" H 2000 7650 60  0001 C CNN "URL"
-	1    2000 7650
-	0    1    1    0   
-$EndComp
 $Comp
 L C C5
 U 1 1 54DE19D6
@@ -472,24 +427,6 @@ Text Notes 1100 6800 0    60   ~ 12
 FTDI <-> AVR
 Text Notes 3950 1000 0    60   ~ 12
 ATMEGA 16M1 MICROCONTROLLER
-Text Label 2900 7400 2    60   ~ 0
-RTS
-$Comp
-L R R4
-U 1 1 54DE1D1D
-P 2000 7400
-F 0 "R4" V 2080 7400 40  0000 C CNN
-F 1 "1k" V 2007 7401 40  0000 C CNN
-F 2 "~" V 1930 7400 30  0000 C CNN
-F 3 "~" H 2000 7400 30  0000 C CNN
-F 4 "RHM1.0KCGCT-ND" H 2000 7400 60  0001 C CNN "P/N"
-F 5 "Digikey" H 2000 7400 60  0001 C CNN "Supplier"
-F 6 "http://www.digikey.com/product-detail/en/MCR03ERTJ102/RHM1.0KCGCT-ND/2796495" H 2000 7400 60  0001 C CNN "URL"
-	1    2000 7400
-	0    -1   -1   0   
-$EndComp
-Text Label 1100 7400 0    60   ~ 0
-GND
 $Comp
 L MCP2551-I/SN IC2
 U 1 1 54EE8E2B
@@ -1326,37 +1263,25 @@ SSR2
 Wire Wire Line
 	3800 4150 3650 4150
 Wire Wire Line
-	3650 3750 3650 4150
-Wire Wire Line
-	3650 4150 3650 4250
+	3650 3750 3650 4250
 Wire Wire Line
 	3800 1250 3300 1250
 Wire Wire Line
-	3300 1150 3300 1250
-Wire Wire Line
-	3300 1250 3300 1550
-Wire Wire Line
-	3300 1550 3300 1700
+	3300 1150 3300 1700
 Wire Wire Line
 	6000 4150 6100 4150
 Wire Wire Line
-	6100 4150 6100 4350
-Wire Wire Line
-	6100 4350 6100 4550
+	6100 4150 6100 4550
 Wire Wire Line
 	6000 4050 6700 4050
 Wire Wire Line
-	6700 4050 6700 4350
-Wire Wire Line
-	6700 4350 6700 4550
+	6700 4050 6700 4550
 Connection ~ 6100 4350
 Connection ~ 6700 4350
 Wire Wire Line
 	6100 4950 6100 5150
 Wire Wire Line
-	6100 5150 6400 5150
-Wire Wire Line
-	6400 5150 6700 5150
+	6100 5150 6700 5150
 Wire Wire Line
 	6700 5150 6700 4950
 Wire Wire Line
@@ -1433,32 +1358,18 @@ Wire Wire Line
 	3800 3750 3650 3750
 Connection ~ 3650 4150
 Wire Wire Line
-	3500 1950 3650 1950
+	3500 1950 3800 1950
 Wire Wire Line
-	3650 1950 3800 1950
-Wire Wire Line
-	1850 1750 1850 1950
-Wire Wire Line
-	1850 1950 1850 2050
+	1850 1750 1850 2050
 Wire Wire Line
 	1300 1850 1300 1950
 Wire Wire Line
-	1300 1950 1850 1950
-Wire Wire Line
-	1850 1950 2350 1950
-Wire Wire Line
-	2350 1950 2600 1950
+	1300 1950 2600 1950
 Connection ~ 1850 1950
 Wire Wire Line
-	2250 1450 2350 1450
+	2250 1450 2700 1450
 Wire Wire Line
-	2350 1450 2600 1450
-Wire Wire Line
-	2600 1450 2700 1450
-Wire Wire Line
-	850  1450 1300 1450
-Wire Wire Line
-	1300 1450 1450 1450
+	850  1450 1450 1450
 Wire Wire Line
 	2350 1950 2350 1850
 Wire Wire Line
@@ -1477,17 +1388,13 @@ Connection ~ 3300 1550
 Wire Wire Line
 	3300 2100 3300 2200
 Wire Wire Line
-	2900 7000 2250 7000
+	3200 7000 2350 7000
 Wire Wire Line
-	2900 7200 2250 7200
+	3200 7100 2350 7100
 Wire Wire Line
-	1100 7000 1750 7000
+	1100 7000 1950 7000
 Wire Wire Line
-	1100 7200 1750 7200
-Wire Wire Line
-	2900 7650 2200 7650
-Wire Wire Line
-	1100 7650 1800 7650
+	1100 7100 1950 7100
 Connection ~ 2600 1450
 Wire Wire Line
 	2600 1950 2600 1850
@@ -1501,13 +1408,9 @@ Wire Notes Line
 Wire Notes Line
 	3000 550  550  550 
 Wire Wire Line
-	2900 7400 2250 7400
+	8600 5600 9100 5600
 Wire Wire Line
-	1100 7400 1750 7400
-Wire Wire Line
-	8600 5600 9050 5600
-Wire Wire Line
-	8600 5800 9050 5800
+	8600 5800 9100 5800
 Wire Wire Line
 	7700 5500 7200 5500
 Wire Wire Line
@@ -1535,19 +1438,11 @@ Wire Wire Line
 Wire Wire Line
 	1850 6400 1850 6500
 Wire Wire Line
-	2000 6400 2000 6500
-Wire Wire Line
-	2000 6500 2000 6600
+	2000 6400 2000 6600
 Wire Wire Line
 	2150 6500 2150 6400
 Wire Wire Line
-	1700 6500 1850 6500
-Wire Wire Line
-	1850 6500 2000 6500
-Wire Wire Line
-	2000 6500 2150 6500
-Wire Wire Line
-	2150 6500 2300 6500
+	1700 6500 2300 6500
 Connection ~ 1850 6500
 Connection ~ 2000 6500
 Connection ~ 2150 6500
@@ -1568,13 +1463,7 @@ Wire Wire Line
 Wire Wire Line
 	850  4550 1050 4550
 Wire Wire Line
-	850  4350 850  4450
-Wire Wire Line
-	850  4450 850  4550
-Wire Wire Line
-	850  4550 850  5200
-Wire Wire Line
-	850  5200 850  5300
+	850  4350 850  5300
 Wire Wire Line
 	1050 4450 850  4450
 Connection ~ 850  4450
@@ -1589,11 +1478,7 @@ Wire Wire Line
 Wire Wire Line
 	9350 3750 9150 3750
 Wire Wire Line
-	5700 6600 5700 7000
-Wire Wire Line
-	5700 7000 5700 7300
-Wire Wire Line
-	5700 7300 5700 7600
+	5700 6600 5700 7600
 Wire Wire Line
 	5700 7000 5500 7000
 Connection ~ 5700 6700
@@ -1649,9 +1534,7 @@ Wire Wire Line
 Wire Wire Line
 	5550 5700 5550 5600
 Wire Wire Line
-	4250 6000 4650 6000
-Wire Wire Line
-	4650 6000 4800 6000
+	4250 6000 4800 6000
 Wire Wire Line
 	4650 6000 4650 5700
 Wire Wire Line
@@ -1810,11 +1693,7 @@ Wire Wire Line
 Wire Wire Line
 	9350 4050 9150 4050
 Wire Wire Line
-	9350 3450 9350 3750
-Wire Wire Line
-	9350 3750 9350 4050
-Wire Wire Line
-	9350 4050 9350 4150
+	9350 3450 9350 4150
 Connection ~ 9350 3750
 Connection ~ 9350 4050
 $Comp
@@ -1894,4 +1773,34 @@ Wire Wire Line
 	5500 6700 5700 6700
 Text Notes 3050 600  0    60   ~ 0
 JP1 Jumper Shunt\nP/N: S9001-ND\nSupplier: Digikey
+$Comp
+L R R2
+U 1 1 55284A3E
+P 9200 5700
+F 0 "R2" V 9280 5700 40  0000 C CNN
+F 1 "120" V 9207 5701 40  0000 C CNN
+F 2 "~" V 9130 5700 30  0000 C CNN
+F 3 "~" H 9200 5700 30  0000 C CNN
+	1    9200 5700
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	9100 5600 9100 5450
+Wire Wire Line
+	9100 5450 9200 5450
+Wire Wire Line
+	9100 5800 9100 5950
+Wire Wire Line
+	9100 5950 9200 5950
+$Comp
+L DIPS_02 SW2
+U 1 1 55287F34
+P 2150 7050
+F 0 "SW2" V 2000 7050 60  0000 C CNN
+F 1 "FTDI" V 2350 7050 60  0000 C CNN
+F 2 "" H 2150 7050 60  0000 C CNN
+F 3 "" H 2150 7050 60  0000 C CNN
+	1    2150 7050
+	0    1    1    0   
+$EndComp
 $EndSCHEMATC
