@@ -1,37 +1,50 @@
-#include "lin_uart.h"
+#include "uart.h"
 
 #include <stdbool.h>
+#include <string.h>
 
-volatile struct ringBuffer serialBuffer = {{0}, 0, 0};
+#include <avr/interrupt.h>
+#include <avr/io.h>
 
+#include "ringbuf.h"
+
+#include "config.h"
 //NOTE:
 //Useful Code Reference http://www.avrfreaks.net/forum/usart-interrupt-atmega32m1
 
+struct ringbuffer tx_buffer = {{0}, 0, 0, true};
+struct ringbuffer rx_buffer = {{0}, 0, 0, true};
+
 //Receive interrupt routine
 ISR(LIN_TC_vect) {
-	if(true) {
-		//FIXME check for RX_OK int
-		//Increment head pointer
-		serialBuffer.head = (serialBuffer.head + 1) % RX_BUFFER_SIZE;
+	if(LINSIR & (1 << LRXOK)) {
+		//clear LRXOK
+		LINSIR &= ~(1 << LRXOK);
 		
-		//Increment tail pointer if necessary
-		if(serialBuffer.head == serialBuffer.tail) {
-			//Increment tail and prevent overload of buffer
-			serialBuffer.tail = (serialBuffer.tail + 1) % RX_BUFFER_SIZE;
+		//write buffer
+		uint8_t recv = LINDAT;
+		buffer_write(&tx_buffer, recv);	
+	}
+	if(LINSIR & (1 << LTXOK)) {
+		//clear LTXOK
+		//LINSIR &= ~(1 << LTXOK);
+		uint8_t data = buffer_read(&tx_buffer); 
+		LINDAT = data;
+		
+		if(buffer_empty(&tx_buffer)) {
+			LINENIR  &= ~(1 << LENTXOK);
 		}
-
-		//Update buffer with latest bite
-		serialBuffer.buffer[serialBuffer.head] = LINDAT;
 	}
 }
 
-void uart_init(void){
+
+void uart_init(uint16_t baud){
 	//Reset LIN/UART hardware
 	LINCR = (1 << LSWRES);
 	
 	//Calculate, and set UART baud rate
-	LINBRRH = (((F_CPU / BAUD) / 16) - 1) >> 8;
-	LINBRRL = (((F_CPU / BAUD) / 16) - 1);
+	LINBRRH = (((F_CPU / baud) / 16) - 1) >> 8;
+	LINBRRL = (((F_CPU / baud) / 16) - 1);
 	
 	//Bit sampling rate/resync
 	LINBTR = (1 << LDISR) | (16 << LBT0);
@@ -45,27 +58,38 @@ void uart_init(void){
 	sei();
 }
 			
-void uart_tx(uint8_t dataByte) {
+void uart_tx_byte(uint8_t data) {
+	
+	//the the buffer was empty, enable tx interrupt
+	if(!(LINENIR & (1 << LENTXOK))) {
+		LINENIR |= (1 << LENTXOK);
+		LINDAT = data;
+	}
+	else {
+		//add data to buffer
+		buffer_write(&tx_buffer, data);
+	}
+	
+	//Single Blocking Transmission
 	//Wait until UART is ready
-	while (LINSIR & (1 << LBUSY));
+	//while (LINSIR & (1 << LBUSY));
 
-	LINDAT = dataByte;
+	//LINDAT = dataByte;
 }
 
-uint8_t uart_rx(void) {
-	//Read circular buffer
-	uint8_t size;
-
-	//I don't want to type this...
-	uint8_t* head = &(serialBuffer.head);
-	uint8_t* tail = &(serialBuffer.tail);
+void uart_print(char* str) {
 	
-	//Calculate buffer size
-	size = (*head > *tail) ?
-			*head - *tail : *tail - *head;
-	for(int i=0;i<size;i++) {
-		int index = (*head + i) % RX_BUFFER_SIZE;
-		serialBuffer[index]
-	}
+}
 
+void uart_println(char* str) {
+	int len = strlen(str);	
+	for(int i=0;i<len;i++) {
+		uart_tx_byte(str[i]);
+	}
+	uart_tx_byte('\r');
+	uart_tx_byte('\n');
+}
+
+uint8_t uart_rx_byte(void) {
+	return buffer_read(&rx_buffer);
 }

@@ -5,7 +5,11 @@
 	provided by Atmel written for AT90CAN devices. The contents were modified
 	for use with ATmegaxxM1 devices. Use of this file is subject to Atmel's 
 	End User License Agreement.
- 
+
+Found at:
+https://eewiki.net/display/microcontroller/CAN+Example+-+ATmega32M1+-+STK600
+
+modified to compile w/ avr-gcc
  */ 
 
 //******************************************************************************

@@ -4,9 +4,14 @@
 	The contents of this file were originally from the CAN Software Library
 	provided by Atmel. Use of this file is subject to Atmel's End User
 	License Agreement.
- 
- */ 
 
+
+Found at:
+https://eewiki.net/display/microcontroller/CAN+Example+-+ATmega32M1+-+STK600
+
+modified to compile w/ avr-gcc
+ */ 
+ 
 
 //******************************************************************************
 //! @file $RCSfile: can_lib.h,v $
