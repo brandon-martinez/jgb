@@ -8,6 +8,8 @@
 
 #include <util/delay.h>
 
+#include <stdio.h>
+
 #include "can_lib.h"
 #include "adc.h"
 #include "timer.h"
@@ -28,6 +30,9 @@ void setup(void) {
 	
 	can_init(0);
 	
+	fdevopen(&uart_putc, NULL);
+	fdevopen(&uart_getc, NULL);
+	
 	sei();
 }
 
@@ -36,17 +41,25 @@ int main(void) {
 	st_cmd_t rx_msg;
 	//Setup Comment
 	setup();
-	char str [] = "Hello World?";
+	char str [] = "Hello World?\n";
 	for(;;) {
-		//uart_println(&(str[0]));
-		uart_println(str);
-		uart_println(adc_read(0));
+		puts(str);
+		//adc_1
+		//uart_println(adc_read(2));
+		////adc_2
+		//uart_println(adc_read(3));
+		////adc_3
+		//uart_println(adc_read(6));
+		////adc_4
+		//uart_println(adc_read(7));
+		////amp_0
+		//uart_println(adc_read(15));
+		////amp_1
+		//uart_println(adc_read(16));
 		
-		char input[50];
-		uart_rx(input);
-		uart_println(input);
 		_delay_ms(2000);
 	}
+	
 	
 	////point message object to first element of data buffer
 	//tx_msg.pt_data = &tx_buffer[0];
