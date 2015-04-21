@@ -6,6 +6,7 @@
 #define FOSC 16000
 
 #define CAN_BAUDRATE 125
+#define CAN_BUFFER_SIZE 8
 
 //AVR RS-232 BAUD
 #define BAUD 9600

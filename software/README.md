@@ -85,3 +85,12 @@ The command below configures the device to use the proper clock source (16MHz cr
 make fuse
 ```
 *NOTE: This command will throw a Device ID mis-match, this is normal. This is because the ATMEGA16M1 is present listed in the AVRDude list of devices*
+
+
+can_drv.h/c
+can_lib.h/c
+
+Found at:
+https://eewiki.net/display/microcontroller/CAN+Example+-+ATmega32M1+-+STK600
+
+modified to compile w/ avr-gcc

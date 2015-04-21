@@ -46,7 +46,7 @@ void uart_init(uint16_t baud){
 	LINBRRH = (((F_CPU / baud) / 16) - 1) >> 8;
 	LINBRRL = (((F_CPU / baud) / 16) - 1);
 	
-	//Bit sampling rate/resync
+	//Bit samplig rate/resync
 	LINBTR = (1 << LDISR) | (16 << LBT0);
 
 	//RX interrupt
@@ -59,7 +59,6 @@ void uart_init(uint16_t baud){
 }
 			
 void uart_tx_byte(uint8_t data) {
-	
 	//the the buffer was empty, enable tx interrupt
 	if(!(LINENIR & (1 << LENTXOK))) {
 		LINENIR |= (1 << LENTXOK);
@@ -69,23 +68,17 @@ void uart_tx_byte(uint8_t data) {
 		//add data to buffer
 		buffer_write(&tx_buffer, data);
 	}
-	
-	//Single Blocking Transmission
-	//Wait until UART is ready
-	//while (LINSIR & (1 << LBUSY));
-
-	//LINDAT = dataByte;
 }
 
 void uart_print(char* str) {
-	
-}
-
-void uart_println(char* str) {
 	int len = strlen(str);	
 	for(int i=0;i<len;i++) {
 		uart_tx_byte(str[i]);
 	}
+}
+
+void uart_println(char* str) {
+	uart_print(str);
 	uart_tx_byte('\r');
 	uart_tx_byte('\n');
 }
@@ -93,3 +86,6 @@ void uart_println(char* str) {
 uint8_t uart_rx_byte(void) {
 	return buffer_read(&rx_buffer);
 }
+
+void uart_rx_read(char* str) {
+	while(!buffer_empty(rx_buffer))

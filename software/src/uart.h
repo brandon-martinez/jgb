@@ -13,9 +13,12 @@ void uart_tx_byte(uint8_t);
 uint8_t uart_rx_byte(void);
 
 //Send a string
-bool uart_tx_str(char*);
+void uart_println(char*);
+
+//Send a string
+void uart_print(char*);
 
 //Receive a string
-bool uart_rx_str(char*);
+void uart_rx_str(char*);
 
 #endif /*LIN_UART_H*/
