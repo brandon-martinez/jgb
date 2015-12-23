@@ -1,20 +1,16 @@
-#ifndef LIN_UART_H 
-#define LIN_UART_H
+#ifndef UART_H 
+#define UART_H
 
-#define F_CPU 16000000
-#define BAUD 115200
+#include <stdint.h>
+#include <stdbool.h>
+#include <stdio.h>
 
-#define RX_BUFFER_SIZE 128
+void uart_init(uint16_t baud);
 
-//Circular serial buffer
-struct ringBuffer {
-	uint8_t buffer[RX_BUFFER_SIZE];
-	uint8_t head;
-	uint8_t tail;
-};
+//Transmit a single byte
+int uart_putc(char, FILE*);
 
+//Receive a single byte
+uint8_t uart_getc(FILE*);
 
-void uart_init(void);
-void uart_tx(uint8_t);
-uint8_t uart_rx(void);
 #endif /*LIN_UART_H*/

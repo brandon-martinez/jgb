@@ -1,34 +1,61 @@
 AVR=atmega16m1
 CC=avr-gcc
-CFLAGS=-Os -g -Wall -std=c99 -mmcu=$(AVR)
+CFLAGS= -Os -g -Wall -std=c99 -mmcu=$(AVR)
 
 AVRDUDE=avrdude
+PRGMR=usbtiny
+#PRGMR=dragon_isp -P usb
 AVR_AVRD=m16
 
-ELF=bin/blink.elf
-HEX=bin/blink.hex
+ELF=lfevcan_16m1.elf
+HEX=lfevcan_16m1.hex
 
+BIN_DIR = bin
+OBJ_DIR = obj
+
+SRC_DIR = src
+
+SRC_FILES = \
+	main.c \
+	adc.c \
+	timer.c \
+	can_lib.c \
+	can_drv.c \
+	uart.c \
+	ringbuf.c \
+
+
+TEST_DIR = test
+
+TEST_FILES = \
+	ringbuf_test.c
+
+SRC = $(addprefix $(SRC_DIR)/, $(SRC_FILES))
+TEST = $(addprefix $(TEST_DIR)/, $(TEST_FILES))
+OBJ = $(patsubst $(SRC_DIR)/%.c, $(OBJ_DIR)/%.o,$(SRC))
 
 all: program
 
-build:
-	$(CC) $(CFLAGS) -c src/main.c -o obj/main.o
-	$(CC) $(CFLAGS) -c src/adc.c -o obj/adc.o
-	$(CC) $(CFLAGS) -c src/timer.c -o obj/timer.o
-	$(CC) $(CFLAGS) -c src/canlib/can_lib.c -o obj/can_lib.o
-	$(CC) $(CFLAGS) -c src/canlib/can_drv.c -o obj/can_drv.o
-	$(CC) $(CFLAGS) obj/main.o obj/adc.o obj/timer.o obj/can_lib.o obj/can_drv.o -o $(ELF)
+#Generate Hex File
+$(HEX):$(ELF)
+	avr-objcopy -j .text -j .data -O ihex $(BIN_DIR)/$(ELF) $(BIN_DIR)/$(HEX)
 	
-hex: build
-	avr-objcopy -j .text -j .data -O ihex $(ELF) $(HEX)
+#Link Object Files
+$(ELF):$(OBJ)
+	$(CC) $(CFLAGS) $(OBJ) -o $(BIN_DIR)/$(ELF)
 	
-program: hex
-	$(AVRDUDE) -F -V -c usbtiny -p $(AVR_AVRD) -U flash:w:$(HEX)
+#Compile Object Files
+$(OBJ): $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
+	$(CC) $(CFLAGS) -c $< -o $@
 
+
+#Program Device
+program: $(HEX)
+	$(AVRDUDE) -F -V -c $(PRGMR) -p $(AVR_AVRD) -U flash:w:$(BIN_DIR)/$(HEX)
 
 #PHONY
 fuse:
-	$(AVRDUDE) -c usbtiny -p $(AVR_AVRD) -F -U lfuse:w:0xef:m
+	$(AVRDUDE) -c $(PRGMR) -p $(AVR_AVRD) -F -U lfuse:w:0xef:m
 
 clean:
 	rm -rf bin/*.hex bin/*.elf obj/*.o
